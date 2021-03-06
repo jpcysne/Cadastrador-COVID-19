@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Cadastrador_COVID_19</RootNamespace>
+    <StartupObject>Cadastrador_COVID_19.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
