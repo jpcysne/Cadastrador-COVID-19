@@ -56,10 +56,11 @@ namespace Cadastrador_COVID_19.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Agendamento agendamento)
+        public async Task<IActionResult> Create([Bind("Id")] Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
+               
                 _context.Add(agendamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

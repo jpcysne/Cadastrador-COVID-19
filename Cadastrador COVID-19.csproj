@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Agendamento\" />
+    <Folder Include="Pages\LocalVacinacao\" />
     <Folder Include="Pages\Paciente\" />
   </ItemGroup>
 

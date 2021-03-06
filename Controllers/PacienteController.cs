@@ -39,15 +39,42 @@ namespace Cadastrador_COVID_19.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Paciente paciente)
         {
-            if (!ModelState.IsValid)
-            {
-                var locaisVacinacao = await _localvacinacaoService.FindAllAsync();
-                var viewModel = new PacienteViewModel { Pacientes = paciente, LocaisVacinacao = locaisVacinacao };
-                return View(viewModel);
-            }
 
-            await _pacienteService.InsertAsync(paciente);
+            var idadePaciente = CalcularIdade( paciente.DatadeNascimento);
+
+            if (idadePaciente < 65)
+            {
+                if (!ModelState.IsValid)
+                {
+                    //var locaisVacinacao = await _localvacinacaoService.FindAllAsync();
+                    //var viewModel = new PacienteViewModel { Pacientes = paciente, LocaisVacinacao = locaisVacinacao };
+                    return RedirectToAction(nameof(Error), new { message = "Idade do Paciente é menor que 65 anos!" });
+                }
+            }
+            else
+            {
+                await _pacienteService.InsertAsync(paciente);
+            }
             return RedirectToAction(nameof(Index));
+        }
+
+        public int CalcularIdade( DateTime DataNascimento)
+        {
+          
+                ;
+                int idade = DateTime.Today.Year - DataNascimento.Year;
+
+                if (idade > 0)
+                {
+                    idade -= Convert.ToInt32(DateTime.Today.Date < DataNascimento.Date.AddYears(idade));
+                }
+                else
+                {
+                    idade = 0;
+                }
+
+                return idade;
+            
         }
 
         public async Task<IActionResult> Delete(int? id)
