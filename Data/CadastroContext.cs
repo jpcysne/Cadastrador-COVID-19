@@ -16,5 +16,7 @@ namespace Cadastrador_COVID_19.Data
 
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<LocalVacinacao> LocalVacinacao { get; set; }
+        public DbSet<Agendamento> Agendamento { get; set; }
     }
+}
 }

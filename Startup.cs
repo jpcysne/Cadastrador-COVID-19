@@ -26,8 +26,8 @@ namespace Cadastrador_COVID_19
         {
             services.AddRazorPages();
 
-            services.AddScoped<PacienteService>();
-            services.AddScoped<LocalVacinacaoService>();
+            //services.AddScoped<PacienteService>();
+            //services.AddScoped<LocalVacinacaoService>();
 
         }
 
